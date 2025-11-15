@@ -1,0 +1,42 @@
+{
+  "dos": [
+    "Aim for 7–9 hours of sleep.",
+    "Drink water regularly; start your day with a glass.",
+    "Include vegetables/fruit with each meal.",
+    "Move your body: target 7–10k steps if appropriate for you."
+  ],
+  "donts": [
+    "Avoid skipping meals frequently.",
+    "Limit sugary drinks and ultra-processed snacks.",
+    "Don’t rely on supplements without professional advice.",
+    "Avoid excessive screen time before bed."
+  ],
+  "diet_tips": [
+    "Build a balanced plate: 1/2 veggies, 1/4 protein, 1/4 whole grains.",
+    "Prioritize lean proteins (fish, beans, tofu, chicken).",
+    "Choose high-fiber carbs (oats, brown rice, quinoa).",
+    "Healthy fats in moderation (nuts, olive oil, avocado)."
+  ],
+  "plans": {
+    "weight loss": {
+      "breakfast": "Greek yogurt + berries + oats",
+      "lunch": "Grilled chicken salad, olive oil & lemon",
+      "snack": "Apple + peanut butter",
+      "dinner": "Baked salmon, quinoa, steamed broccoli"
+    },
+    "maintenance": {
+      "breakfast": "Oatmeal + banana + chia",
+      "lunch": "Turkey sandwich on whole grain + side salad",
+      "snack": "Carrots + hummus",
+      "dinner": "Stir-fried tofu, mixed veggies, brown rice"
+    },
+    "muscle gain": {
+      "breakfast": "Eggs + whole-grain toast + fruit",
+      "lunch": "Chicken, sweet potato, greens",
+      "snack": "Cottage cheese + pineapple",
+      "dinner": "Beef/tempeh, quinoa, roasted veggies"
+    }
+  },
+  "fallback": "I can help with diet plans and daily do’s & don’ts. Try: 'show muscle gain plan' or 'daily health do’s'."
+}
+

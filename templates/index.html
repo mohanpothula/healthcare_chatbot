@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthcare Assistant Chatbot</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; background-color: #f0f8ff; }
+        .chat-container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.3);}
+        .chat-box { height: 400px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 5px; background: #fafafa;}
+        .message { margin: 5px 0; }
+        .user { text-align: right; color: blue; }
+        .bot { text-align: left; color: green; }
+        input[type="text"] { width: 75%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+        button { padding: 10px 15px; border: none; border-radius: 5px; background-color: #28a745; color: white; cursor: pointer; }
+        button:hover { background-color: #218838; }
+        .disclaimer { font-size: 0.85em; color: red; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h2>Healthcare Assistant Chatbot</h2>
+        <div class="chat-box" id="chat-box"></div>
+        <input type="text" id="user-input" placeholder="Type your question...">
+        <button onclick="sendMessage()">Send</button>
+        <div class="disclaimer">
+            ⚠️ This chatbot provides general wellness information only and is not a substitute for professional medical advice.
+        </div>
+    </div>
+
+    <script>
+        const chatHistory = [];
+
+        async function sendMessage() {
+            const inputBox = document.getElementById("user-input");
+            const message = inputBox.value.trim();
+            if (!message) return;
+
+            chatHistory.push({ role: "user", text: message });
+            if (chatHistory.length > 5) chatHistory.shift(); // Keep last 5 messages
+
+            const chatBox = document.getElementById("chat-box");
+            chatBox.innerHTML += `<div class="message user"><b>You:</b> ${message}</div>`;
+            inputBox.value = "";
+
+            const response = await fetch("/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message })
+            });
+            const data = await response.json();
+
+            chatHistory.push({ role: "bot", text: data.response });
+            chatBox.innerHTML += `<div class="message bot"><b>Bot:</b> ${data.response.replace(/\n/g, "<br>")}</div>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
+
