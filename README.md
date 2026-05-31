@@ -59,3 +59,27 @@ Web UI: very basic, shows last messages, input box, and send button.
 “weight loss plan” → 1-day weight loss sample meals
 “tell me a joke” → fallback + GPT fun response
 “I have chest pain” → safety redirect
+
+'''bash
+# Copy task.py to root's bin
+mkdir -p /root/bin
+cp /home/ubuntu/bin/task.py /root/bin/task.py
+
+# Create the task command
+cat > /root/bin/task << 'EOF'
+#!/bin/bash
+python3 /root/bin/task.py "$@"
+EOF
+chmod +x /root/bin/task
+
+# Add to PATH for this session immediately
+export PATH="/root/bin:$PATH"
+
+# Make it permanent
+echo 'export PATH="/root/bin:$PATH"' >> /root/.bashrc
+
+# Test
+task
+
+'''bash
+
